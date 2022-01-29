@@ -1,0 +1,63 @@
+#include<iostream>
+#include<map>
+#include<string>
+using namespace std;
+
+int main()
+{	
+	int key,choice;
+	string str;
+	map <int,string> m;
+	map <int,string> ::iterator it;
+	
+	while(1)
+	{
+	  cout<<"Press 1:Insert value into map"<<endl;
+	  cout<<"Press 2:Delete key from the map"<<endl;
+	  cout<<"Press 3:Size of the map"<<endl;
+	  cout<<"Press 4:Search value at a key in the map"<<endl;
+	  cout<<"Press 5:Display the map"<<endl;
+	  cout<<"Press 6:Exit"<<endl;
+	  cout<<"-----------------------------------------------------------------------------"<<endl;
+	  cout<<"Enter your choice: ";
+	  cin>>choice;
+		switch(choice)
+		{
+			case 1:
+				cout<<"Enter the key: ";
+				cin>>key;
+				cout<<"Enter the value: ";
+				cin>>str;
+				m.insert(pair<int,string>(key,str));
+				break;
+			case 2:
+				cout<<"Enter the mapped key to be deleted: ";
+				cin>>key;
+				m.erase(key);
+				break;
+			case 3:
+				cout<<"Size of the map: ";
+				cout<<m.size()<<endl;
+				break;
+			case 4:
+				cout<<"Enter the key to find its value: ";
+				cin>>key;
+				if (m.count(key)!=0)
+					cout<<m.find(key)->second<<endl;
+				else
+					cout<<"No element found"<<endl;
+				break;
+			case 5:
+				cout<<"Display the map: "<<endl;
+				for(it=m.begin() ; it!=m.end() ;it++)
+					cout<<it->first<<" "<<it->second<<endl;
+				break;
+			case 6:
+				exit(1);
+				break;
+			default:
+				cout<<"invalid input"<<endl;
+		}
+	}
+	return 0;
+}
