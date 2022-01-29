@@ -1,0 +1,32 @@
+#include <iostream>
+using namespace std;
+
+class Wall
+{
+	private:
+		int length;
+		int height;
+		
+	public:
+		Wall(int l,int h)
+		{
+			length=l;
+			height=h;
+		}
+		
+		int calculateArea()
+		{
+			return length*height;
+		}
+};
+
+int main()
+{
+	Wall w1(10,20);
+	Wall w2(30,40);
+	
+	cout<<"Area of w1:"<<w1.calculateArea()<<endl;
+	cout<<"Area of w2:"<<w2.calculateArea()<<endl;
+	
+	return 0;
+}
