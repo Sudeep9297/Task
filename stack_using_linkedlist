@@ -1,0 +1,89 @@
+#include<stdio.h>
+#include<conio.h>
+#include<stdlib.h>
+struct node*head;int choice;
+struct node
+{
+	int data;
+	struct node*link;
+};
+void Push()
+{
+	int elem;struct node*p,*temp;
+	p=(struct node*)malloc(sizeof(struct node));
+	printf("enter the element to be inserted in the stack\n");
+	scanf("%d",&elem);
+	p->data=elem;
+	p->link=NULL;
+	if(head==NULL)
+	{
+		head=p;
+	}
+	else
+	{
+		temp=head;
+		while(temp->link!=0)
+		{
+			temp=temp->link;
+		}
+		temp->link=p;
+	}
+}
+void Pop()
+{
+	struct node*temp;
+	if (head==NULL)
+	{
+		printf("Pop not possible, no elements present in the stack\n");
+	}
+	else
+	{
+		temp=head;
+		while(temp->link->link!=NULL)
+		{
+			temp=temp->link;
+		}
+		printf("the deleted value is %d\n",temp->link->data);
+		temp->link=NULL;
+	}
+}
+void disp()
+{
+	struct node*temp;
+	if(head==NULL)
+		printf("display not possible as no elements presnt in the stack\n");
+	else
+	{
+		temp=head;
+		while(temp->link!=NULL)
+		{
+			printf("%d\t",temp->data);
+			temp=temp->link;
+		}	
+		printf("%d\t\n",temp->data);
+	}
+}
+void main()
+{
+	while(1)
+	{
+			printf("select choice of operation\n");
+		printf("Press 1:Push\n");
+		printf("Press 2:Pop\n");
+		printf("Press 3:disp\n");
+		printf("Press 4:exit\n");
+		scanf("%d",&choice);
+		switch(choice)
+		{
+			case 1:Push();
+			break;
+			case 2:Pop();
+			break;
+			case 3:disp();
+			break;
+			case 4:exit(0);
+			break;
+			default:printf("invalid input\n");
+		}
+	}
+}
