@@ -1,0 +1,49 @@
+#include<iostream>
+#include<cstdlib>
+#include<stack>
+using namespace std;
+
+bool isOperand(char c) //to check if the operand is of char type 
+{
+	if ((c>='a' && c<='z') || (c>='A' && c<='Z'))
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}
+
+string PrefixToInfix(string prefix)
+{
+	stack <string> s;    //create an object of stack of string datatype
+	for (int i=prefix.length()-1; i>=0 ; i--) //loop to iterate from right to left starting from operand 
+	{
+		if (isOperand(prefix[i])) //Push the element into stack if it is operand
+		{
+			string op(1,prefix[i]); //create an object of op and 1 copy of the string is pushed into stack
+			s.push(op);
+		}
+		else //Pop the 2 operands from top of the stack and perform expression and push th eexpression again into the stack 
+		{
+			string op1=s.top();
+			s.pop();
+			string op2=s.top();
+			s.pop();
+			s.push("("+op1+prefix[i]+op2+")");	
+		}
+	}
+	return s.top(); //return the final expression which would be on the top of stack
+}
+
+int main()
+{
+ string infix,prefix;  //declare the infix and prefix expressions to be of string data type
+ cout<<"Enter PREFIX Expression:"<<endl;
+ cin>>prefix;
+ infix=PrefixToInfix(prefix);  //parametrized constructor/function
+ cout<<endl<<"INFIX Expression:"<<endl;
+ cout<<infix<<endl;
+ return 0; //successfully executed
+}
