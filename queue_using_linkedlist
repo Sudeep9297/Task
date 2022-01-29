@@ -1,0 +1,86 @@
+#include<stdio.h>
+#include<conio.h>
+#include<stdlib.h>
+struct node*head;int choice;
+struct node
+{
+	int data;
+	struct node*link;
+};
+void insertRear()
+{
+	int elem;struct node*p,*temp;
+	p=(struct node*)malloc(sizeof(struct node));
+	printf("enter the element to be inserted in the link\n");
+	scanf("%d",&elem);
+	p->data=elem;
+	p->link=NULL;
+	if(head==NULL)
+	{
+		head=p;
+	}
+	else
+	{
+		temp=head;
+		while(temp->link!=0)
+		{
+			temp=temp->link;
+		}
+		temp->link=p;
+	}
+}
+void deleteFront()
+{
+	struct node*temp;
+	if(head==NULL)
+	{
+		printf("no deletion possible as no nodes are available in the list\n");
+	}
+	else
+	{
+		temp=head;
+		printf("the deleted value is %d\n",temp->data);
+		head=head->link;
+		temp->link=NULL;
+	}
+}
+void disp()
+{
+	struct node*temp;
+	if(head==NULL)
+		printf("display not possible as no nodes are present in the list\n");
+	else
+	{
+		temp=head;
+		while(temp->link!=NULL)
+		{
+			printf("%d\t",temp->data);
+			temp=temp->link;
+		}	
+		printf("%d\t\n",temp->data);
+	}
+}
+void main()
+{
+	while(1)
+	{
+		printf("select choice of operation\n");
+		printf("Press 1:insertion at Rear end\n");
+		printf("Press 2:deletion at Front end\n");
+		printf("Press 3:disp\n");
+		printf("Press 4:exit\n");
+		scanf("%d",&choice);
+		switch(choice)
+		{
+			case 1:insertRear();
+			break;
+			case 2:deleteFront();
+			break;
+			case 3:disp();
+			break;
+			case 4:exit(0);
+			break;
+			default:printf("invalid input\n");
+		}
+	}
+}
