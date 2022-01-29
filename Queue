@@ -1,0 +1,68 @@
+#include<iostream>
+#include<cstdlib>
+#define Size 10000
+using namespace std;
+int a[Size],elem,front=0,rear=-1,choice;
+
+void enqueue()
+{
+	if (rear>=Size-1)
+		cout<<"Queue overflow"<<endl; //Queue is full, cannor insert new element
+	else
+	{
+		rear++;
+		cout<<"Enter the element to be inserted: ";
+		cin>>elem;
+		a[rear]=elem;
+	}
+}
+void dequeue()
+{
+	if (front>rear)
+		cout<<"Queue underflow"<<endl; //Queue is empty, cannot delete element
+	else
+	{
+		cout<<"The deleted element is: "<<a[front]<<endl;
+		front++;
+	}
+}
+void disp()
+{
+	if (front>rear)
+		cout<<"Queue underflow"<<endl; //Queue is empty, cannot display elements
+	else
+	{
+		cout<<"Queue elements are: ";
+		for (int i=front;i<=rear;i++)
+		{
+			cout<<a[i]<<" ";
+		}
+		cout<<endl;
+	}
+}
+int main()
+{
+	cout<<"1.Enqueue 2.Dequeue 3. Display"<<endl;
+	do
+	{
+	 cout<<"Choice: ";
+	 cin>>choice;
+	 switch(choice)
+	 {
+	 	case 1: enqueue();
+	 		break;
+	 	case 2: dequeue();
+	 		break;
+	 	case 3: disp();
+	 		break;
+	 	case 4:
+	 		cout<<"Exit"<<endl;
+	 		break;
+	 	default:
+	 		cout<<"Invalid input"<<endl;
+	 		break;	
+	 }
+	}
+	while(choice!=4);
+	return 0;
+}
