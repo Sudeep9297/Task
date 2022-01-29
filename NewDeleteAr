@@ -1,0 +1,29 @@
+#include <iostream>
+using namespace std;
+
+int main()
+{
+	int n;
+	cout<<"enter the number of students:";
+	cin>>n;
+	int* ptr;
+	
+	ptr=new int[n];
+	
+	cout<<"Enter the marks of students"<<endl;
+	for (int i=1;i<=n;i++)
+	{
+		cout<<"Student"<< i <<":";
+		cin>>*(ptr+i);
+	}
+	
+	cout<<"\nThe marks of students are"<<endl;
+	for (int i=1;i<=n;i++)
+	{
+		cout<<"Student"<< i <<":"<< *(ptr+i)<<endl;
+	}
+	
+	delete[]ptr;
+	
+	return 0;
+}
