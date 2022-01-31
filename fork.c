@@ -7,7 +7,7 @@ printf("The process id is %d\n",getpid());
 
 return_value=fork();
 
-/*if (return_value<0)
+if (return_value<0)
 {
 	printf("\nfork failure\n");   //fork failed
 }
@@ -23,6 +23,6 @@ else
 	printf("Parent Process\n");
 	printf("the process id is %d\n",getpid());
 	//sleep(20);
-}*/
+}
 return 0;
 }
