@@ -16,7 +16,7 @@ struct node* ptr;
 int main()
 {
 struct node* head;
-int b,i;
+int b,i,j=0;
 
 head=NULL;
 
@@ -29,12 +29,11 @@ while(1)
 	{
 		case (1): printf("\nEnter the number of employee details you would like to enter:\t");
           		  scanf("%d",&i);
-   					while(i>0)
+   					for(j=0;j<i;j++)
    					{
    						head=createnode(head);
-  						 i--;
- 				    }
- 				    break;
+ 				   	 }
+ 				   	 break;
 
 		case (2): display(head);
          		  break;
